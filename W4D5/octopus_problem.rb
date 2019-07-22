@@ -14,15 +14,13 @@ def sluggish_octopus
 end
 
 def dominant_octopus(fish)
-    fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
-
     return fish if fish.length <= 1
 
     mid_fish = fish.length/2
-    left_fishes = fish[0...mid_fish]
-    right_fishes = fish[mid_fish..-1]
+    left_fishes = fish.take(mid_fish)
+    right_fishes = fish.drop(mid_fish)
+
     merge(dominant_octopus(left_fishes), dominant_octopus(right_fishes))
-    
 end
 
 def merge(left, right)
@@ -66,3 +64,6 @@ def constant_dance(target)
     tiles_array = ["up", "right-up", "right", "right-down", "down", "left-down", "left",  "left-up" ]
     tiles_array.index(target)
 end
+
+fish = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish', 'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh']
+p dominant_octopus(fish)
